@@ -29,6 +29,7 @@ class UserController extends Controller
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8|confirmed',
+            'role'     => 'required|in:Super Admin,Pelanggan,Mitra',
         ]);
 
         $data = $request->all();
@@ -54,6 +55,7 @@ class UserController extends Controller
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'nullable|min:8|confirmed',
+            'role'  => 'required|in:Super Admin,Pelanggan,Mitra',
         ]);
 
         $user = User::findOrFail($id);
